@@ -3,11 +3,11 @@
   "dockerComposeFile": "../docker-compose.yml",
   "service": "front",
   "workspaceFolder": "/app/front",
+  "postAttachCommand": "git config --global --add safe.directory /go/src",
+  "shutdownAction": "stopCompose",
   "features": {
     "ghcr.io/nils-geistmann/devcontainers-features/zsh": {}
   },
-  "postAttachCommand": "git config --global --add safe.directory /go/src",
-  "shutdownAction": "stopCompose",
   "customizations": {
     "vscode": {
       "settings": {
@@ -25,10 +25,7 @@
           "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
         }
       },
-      "extensions": [
-        "oderwat.indent-rainbow",
-        "rvest.vs-code-prettier-eslint"
-      ]
+      "extensions": ["oderwat.indent-rainbow", "rvest.vs-code-prettier-eslint"]
     }
   }
 }
