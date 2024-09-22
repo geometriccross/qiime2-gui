@@ -13,6 +13,7 @@ charset-normalizer = "==3.3.2"
 cryptography = "==43.0.1"
 decorator = "==5.1.1"
 dill = "==0.3.8"
+fastapi = "*"
 filelock = "==3.16.1"
 "flufl.lock" = "==8.1.0"
 globus-sdk = "==3.45.0"
@@ -39,6 +40,7 @@ typing-extensions = "==4.12.2"
 tzdata = "==2024.1"
 tzlocal = "==5.2"
 urllib3 = "==2.2.3"
+uvicorn = "*"
 
 [dev-packages]
 pytest = "*"
@@ -46,4 +48,56 @@ flake8 = "*"
 autopep8 = "*"
 
 [requires]
-python_version = "3.10"
+python_version = "3.11.10"
+
+# qiime2 require these packages
+# if you want to install qiime2 only, you should use below
+# annotated-types==0.7.0
+# anyio==4.6.0
+# appdirs==1.4.4
+# atpublic==5.0
+# bibtexparser==1.4.1
+# certifi==2024.8.30
+# cffi==1.17.1
+# charset-normalizer==3.3.2
+# click==8.1.7
+# cryptography==43.0.1
+# decorator==5.1.1
+# dill==0.3.8
+# distlib==0.3.8
+# fastapi==0.115.0
+# filelock==3.16.1
+# flufl.lock==8.1.0
+# globus-sdk==3.45.0
+# h11==0.14.0
+# idna==3.10
+# numpy==2.1.1
+# pandas==2.2.3
+# parsl==2024.9.16
+# pipenv==2024.0.2
+# platformdirs==4.3.6
+# psutil==6.0.0
+# pycparser==2.22
+# pydantic==2.9.2
+# pydantic_core==2.23.4
+# PyJWT==2.9.0
+# pyparsing==3.1.4
+# python-dateutil==2.9.0.post0
+# pytz==2024.2
+# PyYAML==6.0.2
+# pyzmq==26.2.0
+# qiime2 @ https://github.com/qiime2/qiime2/archive/refs/heads/Release-2024.5.tar.gz#sha256=9ff13916f5bb01692596364d02ba5623cca02b74385f5768ab119b230f6ba713
+# requests==2.32.3
+# setproctitle==1.3.3
+# six==1.16.0
+# sniffio==1.3.1
+# starlette==0.38.5
+# tblib==3.0.0
+# tomlkit==0.13.2
+# typeguard==4.3.0
+# typing_extensions==4.12.2
+# tzdata==2024.1
+# tzlocal==5.2
+# urllib3==2.2.3
+# uvicorn==0.30.6
+# virtualenv==20.26.5
