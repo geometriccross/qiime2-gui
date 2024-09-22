@@ -1,0 +1,31 @@
+{
+  "name": "qiime2-front",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "front",
+  "workspaceFolder": "/app/front",
+  "features": {
+    "ghcr.io/nils-geistmann/devcontainers-features/zsh": {}
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.tabSize": 4,
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+        "editor.formatOnType": true,
+        "editor.formatOnPaste": true,
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file",
+        "files.autoSave": "onFocusChange",
+        "vs-code-prettier-eslint.prettierLast": false,
+        "[typescriptreact]": {
+          "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+        }
+      },
+      "extensions": [
+        "oderwat.indent-rainbow",
+        "rvest.vs-code-prettier-eslint"
+      ]
+    }
+  }
+}

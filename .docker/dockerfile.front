@@ -1,0 +1,11 @@
+FROM node:22-slim
+
+RUN apt update \ 
+    && apt upgrade -y \
+    && apt install -y \
+        zsh
+
+EXPOSE 3000
+
+# RUN -> volume -> CMD
+CMD sh -c "npm install \ && npm start"

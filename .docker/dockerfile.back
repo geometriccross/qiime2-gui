@@ -1,0 +1,21 @@
+# pipenv install fails if the python version is 12 or higher
+FROM python:3.11.10-slim-bookworm
+
+RUN apt update \
+    && apt upgrade -y \
+    && apt install -y \
+        git \
+        zsh
+
+# Process Substitution is only available in bash
+SHELL ["/bin/bash", "-c"]
+
+# install qiime2 without conda
+COPY back/Pipfile .
+COPY back/Pipfile.lock .
+RUN pip install pipenv \
+    && pipenv install --system
+
+EXPOSE 8000
+
+CMD sleep infinity

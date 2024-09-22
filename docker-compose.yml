@@ -1,0 +1,25 @@
+services:
+  front:
+    container_name: qiime2-front
+    build:
+      context: .
+      dockerfile: .docker/dockerfile.front
+    volumes:
+      - ./front:${FRONT_DIR}:cached
+    working_dir: ${FRONT_DIR}
+    ports:
+      - "${FRONT_PORT}:${FRONT_PORT}"
+
+  back:
+    container_name: qiime2-back
+    build:
+      context: .
+      dockerfile: .docker/dockerfile.back
+    volumes:
+      - ./back:${BACK_DIR}:cached
+    working_dir: ${BACK_DIR}
+    ports:
+      - "${BACK_PORT}:${BACK_PORT}"
+
+volumes:
+  front_node_modules:

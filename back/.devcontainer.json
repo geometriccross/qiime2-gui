@@ -1,0 +1,31 @@
+{
+    "name": "qiime2-back",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "back",
+    "workspaceFolder": "/app/back",
+    "features": {
+        "ghcr.io/nils-geistmann/devcontainers-features/zsh": {}
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "editor.tabSize": 4,
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "editor.defaultFormatter": "ms-python.autopep8",
+                "editor.formatOnType": true,
+                "editor.formatOnPaste": true,
+                "editor.formatOnSave": true
+            },
+            "extensions": [
+                "ms-python.autopep8",
+                "ms-python.flake8",
+                "donjayamanne.python-environment-manager",
+                "ms-python.python",
+                "ms-python.debugpy",
+                "njpwerner.autodocstring",
+                "mgesbert.python-path",
+                "mechatroner.rainbow-csv"
+            ]
+        }
+    }
+}
