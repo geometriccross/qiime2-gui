@@ -1,12 +1,21 @@
 FROM node:22-slim
 
-RUN apt update \ 
+ARG USERNAME=node
+
+# create the user
+# https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user#_creating-a-nonroot-user
+RUN apt update \
     && apt upgrade -y \
     && apt install -y \
+        sudo \
         git \
-        zsh
+        zsh \
+    && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
+    && chmod 0440 /etc/sudoers.d/${USERNAME}
 
 EXPOSE 3000
+
+USER ${USERNAME}
 
 # RUN -> volume -> CMD
 CMD sh -c "npm install \ && npm start"

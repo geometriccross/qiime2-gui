@@ -1,11 +1,22 @@
 # pipenv install fails if the python version is 12 or higher
 FROM python:3.11.10-slim-bookworm
 
-RUN apt update \
+ARG USERNAME=devuser
+ARG USER_UID=1000
+ARG USER_GID=${USER_UID}
+
+# Create the user
+# https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user#_creating-a-nonroot-user
+RUN groupadd --gid ${USER_GID} ${USERNAME} \
+    && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} \
+    && apt update \
     && apt upgrade -y \
     && apt install -y \
+        sudo \
         git \
-        zsh
+        zsh \
+    && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
+    && chmod 0440 /etc/sudoers.d/${USERNAME}
 
 # Process Substitution is only available in bash
 SHELL ["/bin/bash", "-c"]
@@ -17,5 +28,10 @@ RUN pip install pipenv \
     && pipenv install --system
 
 EXPOSE 8000
+
+USER ${USERNAME}
+
+# Install oh-my-zsh
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 CMD sleep infinity
