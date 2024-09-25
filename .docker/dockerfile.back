@@ -1,5 +1,5 @@
 # pipenv install fails if the python version is 12 or higher
-FROM python:3.11.10-slim-bookworm
+FROM quay.io/qiime2/tiny:2024.5
 
 ARG USERNAME=devuser
 ARG USER_UID=1000
@@ -18,20 +18,15 @@ RUN groupadd --gid ${USER_GID} ${USERNAME} \
     && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
     && chmod 0440 /etc/sudoers.d/${USERNAME}
 
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
 # Process Substitution is only available in bash
 SHELL ["/bin/bash", "-c"]
-
-# install qiime2 without conda
-COPY back/Pipfile .
-COPY back/Pipfile.lock .
-RUN pip install pipenv \
-    && pipenv install --system
-
-EXPOSE 8000
-
-USER ${USERNAME}
+RUN source activate qiime2-tiny-2024.5 && \
+    conda install \
+        fastapi \
+        uvicorn
 
 # Install oh-my-zsh
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 CMD sleep infinity
