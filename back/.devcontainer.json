@@ -12,12 +12,18 @@
         "vscode": {
             "settings": {
                 "git.openRepositoryInParentFolders": "always",
+
+                // Formatting
                 "editor.tabSize": 4,
                 "terminal.integrated.defaultProfile.linux": "zsh",
                 "editor.defaultFormatter": "ms-python.autopep8",
                 "editor.formatOnType": true,
                 "editor.formatOnPaste": true,
-                "editor.formatOnSave": true
+                "editor.formatOnSave": true,
+
+                // Pylance
+                "python.analysis.typeCheckingMode": "basic",
+                "python.analysis.autoImportCompletions": true
             },
             "extensions": [
                 "ms-python.autopep8",
@@ -27,7 +33,9 @@
                 "ms-python.debugpy",
                 "njpwerner.autodocstring",
                 "mgesbert.python-path",
-                "mechatroner.rainbow-csv"
+                "mechatroner.rainbow-csv",
+                "formulahendry.code-runner",
+                "ms-python.vscode-pylance"
             ]
         }
     }
