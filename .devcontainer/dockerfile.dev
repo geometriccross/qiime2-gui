@@ -18,6 +18,7 @@ RUN groupadd --gid ${USER_GID} ${USERNAME} \
     && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
     && chmod 0440 /etc/sudoers.d/${USERNAME}
 
+# Install oh-my-zsh
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Process Substitution is only available in bash
@@ -27,6 +28,6 @@ RUN source activate qiime2-tiny-2024.5 && \
         fastapi \
         uvicorn
 
-# Install oh-my-zsh
+EXPOSE 8000
 
 CMD sleep infinity

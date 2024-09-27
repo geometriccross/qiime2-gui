@@ -1,0 +1,11 @@
+services:
+  app:
+    container_name: qiime2-gui
+    build:
+      context: .
+      dockerfile: dockerfile.dev
+    volumes:
+      - ..:/app:cached
+    working_dir: /app
+    ports:
+      -  "${BACK_PORT}:${BACK_PORT}"
