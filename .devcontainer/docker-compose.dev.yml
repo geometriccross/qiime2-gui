@@ -8,4 +8,4 @@ services:
       - ..:/app:cached
     working_dir: /app
     ports:
-      -  "${BACK_PORT}:${BACK_PORT}"
+      - "8000:8000"
